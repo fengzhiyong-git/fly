@@ -1,36 +1,40 @@
 <template>
   <div class="Aside">
-      <div class="title">标题</div>
-      <ul class="aside-wrap">
-        <li :class="{ 'active':index == activeIndex }" v-for="(item,index) in dataSource" :key="index" @click="toPath(index,item)">
-          <!-- <router-link :to="item.path">{{ item.name }}</router-link> -->
-          {{ item.name }}
-        </li>
-      </ul>
+    <div class="title">标题</div>
+    <ul class="aside-wrap">
+      <li
+        :class="{ active: index == activeIndex }"
+        v-for="(item, index) in dataSource"
+        :key="index"
+        @click="toPath(index, item)"
+      >
+        <!-- <router-link :to="item.path">{{ item.name }}</router-link> -->
+        {{ item.name }}
+      </li>
+    </ul>
   </div>
-  
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from "vue-property-decorator";
 @Component({
-  name: 'Aside',
-  components:{}
+  name: "Aside",
+  components: {}
 })
-export default class Aside extends Vue{
-  private activeIndex = 0
+export default class Aside extends Vue {
+  private activeIndex = 0;
   private dataSource = [
-    { name: "柱状图" , path: "/column" },
-    { name: "饼状图" , path: "/pie" },
-    { name: "省份地图" , path: "/pie" },
-  ]
-  private toPath(i: any,item: any){
+    { name: "柱状图", path: "/column" },
+    { name: "饼状图", path: "/pie" },
+    { name: "省份地图", path: "/pie" }
+  ];
+  private toPath(i: any, item: any) {
     this.activeIndex = i;
-    this.$router.push(item.path)
+    this.$router.push(item.path);
   }
 }
 </script>
 <style lang="scss" scoped>
-.Aside{
+.Aside {
   font-size: 16px;
   // background-color: white;
   width: 300px;
@@ -44,27 +48,27 @@ export default class Aside extends Vue{
   border-right: 1px solid #eaecef;
   overflow-y: auto;
   padding-top: 20px;
-  a{
+  a {
     width: 100%;
     height: 100%;
     display: inline-block;
   }
-  .title{
+  .title {
     font-size: 18px;
     font-weight: bold;
     padding: 12px 16px;
   }
-  .aside-wrap{
-    li{
+  .aside-wrap {
+    li {
       padding: 12px 32px;
       font-size: 16px;
       cursor: pointer;
-      &:hover{
+      &:hover {
         color: #3489fd;
         background-color: #d6e7ff;
       }
     }
-    .active{
+    .active {
       font-weight: 600;
       color: #3489fd;
       background: #d6e7ff;
