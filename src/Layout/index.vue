@@ -28,9 +28,12 @@ export default class Home extends Vue{
   width: 100%;
   height: 100%;
   .main-container{
-    width: 100%;
+    width: calc(100% -300px);
     height: calc(100% - 60px);
     margin-left: 300px;
+    padding: 24px;
+    box-sizing: border-box;
+    overflow-y: auto;
   }
 }
 

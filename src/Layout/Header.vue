@@ -2,7 +2,7 @@
   <header class="navbar">
       <div class="header-left">
           <img class="site-icon" src="@/assets/header/head-logo.jpg" alt="">
-          <div class="site-name">Mr.Mao's blog</div>
+          <div class="site-name">Mr.Feng's blog</div>
       </div>
       <div class="header-right">
         <!-- <el-input

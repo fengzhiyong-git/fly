@@ -21,6 +21,7 @@ export default class Aside extends Vue{
   private dataSource = [
     { name: "柱状图" , path: "/column" },
     { name: "饼状图" , path: "/pie" },
+    { name: "省份地图" , path: "/pie" },
   ]
   private toPath(i: any,item: any){
     this.activeIndex = i;
@@ -31,12 +32,12 @@ export default class Aside extends Vue{
 <style lang="scss" scoped>
 .Aside{
   font-size: 16px;
-  background-color: white;
+  // background-color: white;
   width: 300px;
   position: fixed;
   z-index: 10;
   margin: 0;
-  top: 62px;
+  top: 60px;
   left: 0;
   bottom: 0;
   box-sizing: border-box;
