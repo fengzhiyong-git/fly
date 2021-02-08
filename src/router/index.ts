@@ -1,24 +1,36 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
-
+import Layout from '@/Layout/index.vue'
+import Home from "@/Layout/index.vue";
 Vue.use(VueRouter);
+
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Layout,
+    children: [
+      {
+        path: "home",
+        name: "Home",
+        component: Home
+      },
+      {
+        path: "column",
+        name: "Column",
+        component: () =>import("@/modules/Column.vue")
+      },
+      {
+        path: "pie",
+        name: "Pie",
+        component: () =>import("@/modules/Pie.vue")
+      },
+    ]
   },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
+  
+  
+  
 ];
 
 const router = new VueRouter({
@@ -27,4 +39,9 @@ const router = new VueRouter({
   routes
 });
 
+// 修复路由返回一个promise没有catch接收而报错的问题
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location: any) {
+  return (originalPush.call(this, location) as any).catch((err: any) => err)
+}
 export default router;

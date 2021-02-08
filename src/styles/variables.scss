@@ -1,0 +1,60 @@
+$baseElement: body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,
+  h5, h6, i, b, textarea, button, input, select, figure, figcaption, label;
+
+// 配置通用样式
+#{$baseElement} {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  border: none;
+  font-family: 'Microsoft Yahei','PingFangSC-Regular', 'PingFang SC',  '微软雅黑', '宋体', Arial, sans-serif,
+    'Source Sans Pro';
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  &:hover {
+    outline: none;
+  }
+}
+
+
+body {
+  font-family: 'Microsoft Yahei', '微软雅黑', '宋体', Arial, sans-serif, 'Source Sans Pro';
+}
+
+//根据不同类型，设置全局字体大小
+.miniFontSize {
+  #{$baseElement} {
+    font-size: 12px !important;
+  }
+}
+
+.standardFontSize {
+  #{$baseElement} {
+    font-size: 14px !important;
+  }
+}
+
+.largeFontSize {
+  #{$baseElement} {
+    font-size: 16px !important;
+  }
+}
+
+.superFontSize {
+  #{$baseElement} {
+    font-size: 18px !important;
+  }
+}
+// 更改主题
+// $--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+// @import "~element-ui/packages/theme-chalk/src/index";
+
+// :export {
+//   theme: $--color-primary;
+// }

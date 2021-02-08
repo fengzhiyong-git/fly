@@ -1,0 +1,71 @@
+/*
+  公共类样式
+*/
+//  页面的上中下布局(顶部查询,中间表格,底部分页)
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  width: 6px;
+  background: rgba(#101F1C, 0.1);
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(#101F1C, 0.5);
+  background-clip: padding-box;
+  min-height: 28px;
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(#101F1C, 1);
+}
+.public-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  &>.header {
+    display: flex;
+    margin-bottom: 18px;
+    .left {
+      flex: 1;
+    }
+  }
+  &>.center {
+    //height: calc(100% - 100px)!important;
+    flex: 1;
+  }
+  &.footer {
+    display:flex;
+    justify-content: flex-end;
+  }
+}
+.public-padding {
+  padding: 24px;
+}
+.public-margin {
+  margin: 16px;
+}
+iframe {
+  border: none;
+}
+.no-data{
+  height: 100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 240px;
+    height: 240px;
+  }
+}
+
