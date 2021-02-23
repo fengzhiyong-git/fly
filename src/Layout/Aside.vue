@@ -25,7 +25,8 @@ export default class Aside extends Vue {
   private dataSource = [
     { name: "柱状图", path: "/column" },
     { name: "饼状图", path: "/pie" },
-    { name: "省份地图", path: "/pie" }
+    { name: "省份地图", path: "/pie" },
+    { name: "表格合计", path: "/tableNum" },
   ];
   private toPath(i: any, item: any) {
     this.activeIndex = i;

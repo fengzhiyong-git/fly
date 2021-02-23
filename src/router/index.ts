@@ -16,6 +16,10 @@ const routes: Array<RouteConfig> = [
         component: Home
       },
       {
+        path: "/",
+        redirect: "/column"
+      },
+      {
         path: "column",
         name: "Column",
         component: () => import("@/modules/Column.vue")
@@ -24,6 +28,11 @@ const routes: Array<RouteConfig> = [
         path: "pie",
         name: "Pie",
         component: () => import("@/modules/Pie.vue")
+      },
+      {
+        path: "tableNum",
+        name: "TableNum",
+        component: () => import("@/modules/TableNum.vue")
       }
     ]
   }
