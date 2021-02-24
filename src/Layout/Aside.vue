@@ -23,10 +23,12 @@ import { Vue, Component } from "vue-property-decorator";
 export default class Aside extends Vue {
   private activeIndex = 0;
   private dataSource = [
-    { name: "柱状图", path: "/column" },
-    { name: "饼状图", path: "/pie" },
-    { name: "省份地图", path: "/pie" },
-    { name: "表格合计", path: "/tableNum" },
+    { name: "柱状图", path: "/Column" },
+    { name: "饼状图", path: "/Pie" },
+    { name: "省份地图", path: "/Province" },
+    { name: "长沙市", path: "/ChangeSha" },
+    { name: "表格合计", path: "/TableNum" },
+    { name: "百度地图", path: "/BaiduMap" },
   ];
   private toPath(i: any, item: any) {
     this.activeIndex = i;

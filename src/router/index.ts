@@ -17,20 +17,35 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: "/",
-        redirect: "/column"
+        redirect: "/Column"
       },
       {
-        path: "column",
+        path: "Column",
         name: "Column",
         component: () => import("@/modules/Column.vue")
       },
       {
-        path: "pie",
+        path: "Pie",
         name: "Pie",
         component: () => import("@/modules/Pie.vue")
       },
       {
-        path: "tableNum",
+        path: "Province",
+        name: "Province",
+        component: () => import("@/modules/Province.vue")
+      },
+      {
+        path: "ChangeSha",
+        name: "ChangeSha",
+        component: () => import("@/modules/ChangSha.vue")
+      },
+      {
+        path: "BaiduMap",
+        name: "BaiduMap",
+        component: () => import("@/modules/BaiduMap.vue")
+      },
+      {
+        path: "TableNum",
         name: "TableNum",
         component: () => import("@/modules/TableNum.vue")
       }

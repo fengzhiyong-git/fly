@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "益阳市东部新区",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4546" } },
+"features": [
+
+]
+}
