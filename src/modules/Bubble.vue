@@ -194,7 +194,7 @@ export default class Province extends Vue {
 
     const myChart = echarts.init(this.$refs.province)
     axios.get(`/static/mapJson/${params.name}.json`).then((res:any) => {
-      echarts.registerMap("china", res.data)   
+      echarts.registerMap("hunan", res.data)   
       let option = null
       option = {
         // backgroundColor: {
@@ -246,12 +246,12 @@ export default class Province extends Vue {
         //   inRange: {}
         // },
         geo: {
-          map: "china",
+          map: "hunan",
           show: true,
           roam: true,
           // center: [114.006045, 32.978599],  // 驿城区
           center: [111.708497, 27.728136],  // 娄底市
-          zoom: 2.5, //当前视角缩放比例
+          zoom: 1, //当前视角缩放比例
           label: {
             normal: {
               show: false
@@ -306,7 +306,7 @@ export default class Province extends Vue {
           },
           {
             type: "map",
-            map: "china",
+            map: "hunan",
             geoIndex: 0,
             aspectScale: 0.75, //长宽比
             showLegendSymbol: false, // 存在legend时显示
