@@ -35,6 +35,16 @@ const routes: Array<RouteConfig> = [
         component: () => import("@/modules/Province.vue")
       },
       {
+        path: "Province1",
+        name: "Province1",
+        component: () => import("@/modules/Province1.vue")
+      },
+      {
+        path: "Bubble",
+        name: "Bubble",
+        component: () => import("@/modules/Bubble.vue")
+      },
+      {
         path: "ChangeSha",
         name: "ChangeSha",
         component: () => import("@/modules/ChangSha.vue")
@@ -48,6 +58,11 @@ const routes: Array<RouteConfig> = [
         path: "TableNum",
         name: "TableNum",
         component: () => import("@/modules/TableNum.vue")
+      },
+      {
+        path: "TestTable",
+        name: "TestTable",
+        component: () => import("@/modules/TestTabel.vue")
       }
     ]
   }

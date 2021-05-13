@@ -15,7 +15,8 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component, Watch } from "vue-property-decorator";
+import { AppModule } from '@/store/modules/app'
 @Component({
   name: "Aside",
   components: {}
@@ -26,14 +27,32 @@ export default class Aside extends Vue {
     { name: "柱状图", path: "/Column" },
     { name: "饼状图", path: "/Pie" },
     { name: "省份地图", path: "/Province" },
+    { name: "气泡效果", path: "/Bubble" },
     { name: "长沙市", path: "/ChangeSha" },
     { name: "表格合计", path: "/TableNum" },
     { name: "百度地图", path: "/BaiduMap" },
+    { name: "测试表单验证", path: "/TestTable" },
   ];
   private toPath(i: any, item: any) {
     this.activeIndex = i;
     this.$router.push(item.path);
   }
+
+  get CurrentPath(){
+    return AppModule.CurrentRoutePath
+  }
+
+  @Watch('$route',{ deep: true , immediate: true })
+  getRoute(val:any){
+    if(!val)
+      return false
+    this.dataSource.map((item:any,i:any)=>{
+      if(item.path === val.fullPath){
+        this.activeIndex = i;
+      }
+    })
+  }
+ 
 }
 </script>
 <style lang="scss" scoped>

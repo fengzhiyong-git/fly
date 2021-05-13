@@ -27,7 +27,7 @@ export default class Province extends Vue {
     { name: '娄底市', value: 14, code: 431300 },
     { name: '湘西州', value: 15, code: 433100 }
   ]
-  private mapOptions = {
+  private mapOptions:any = {
     toolbox: {
       show: false
     },
@@ -75,18 +75,45 @@ export default class Province extends Vue {
         mapType: 'hunan',
         zoom: 1.15,
         aspectScale: 0.95, //长宽比
+        // label: {
+        //   show: true,
+        //   normal: {
+        //     show: true,
+        //     color: '#fff'
+        //   },
+        //   emphasis: {
+        //     show: true,
+        //     fontSize: 16,
+        //     color: '#fff'
+        //   },
+        //   align: 'center'
+        // },
         label: {
           show: true,
-          normal: {
-            show: true,
-            color: '#fff'
+          formatter: function (params:any) {
+            return (
+              "{a|" +
+              params.name +
+              "}" +
+              "\n" +
+              "{b|" +
+              (params.value ? params.value : 0) +
+              "}"
+            );
           },
-          emphasis: {
-            show: true,
-            fontSize: 16,
-            color: '#fff'
+          rich: {
+            a: {
+              color: "#ffffff",
+              fontSize: 12,
+            },
+            b: {
+              fontSize: 12,
+              color: "#1058D1",
+              backgroundColor: "ffffff",
+              padding: [0, 7, 2, 7],
+              borderRadius: 7,
+            },
           },
-          align: 'center'
         },
         itemStyle: {
           normal: {
@@ -114,7 +141,7 @@ export default class Province extends Vue {
             }
           }
         }
-      }
+      },      
     ]
   }
  // json 数据可直接放在public/static/mapJson/湖南省.json   axios.get可以直接访问
@@ -123,7 +150,7 @@ export default class Province extends Vue {
     axios.get(`/static/mapJson/${params.name}.json`).then((res:any) => {
       echarts.registerMap(params.name, res.data)   
       this.mapOptions.series[0].mapType = params.name
-      // this.mapOptions.series[0].data = d
+      // this.mapOptions.series[0].data = d      
       ;(myChart as any).setOption(this.mapOptions)
       setTimeout(() => {
         window.addEventListener('resize', () => {

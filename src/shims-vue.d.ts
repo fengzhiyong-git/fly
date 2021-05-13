@@ -6,3 +6,4 @@ declare module "*.vue" {
 declare module 'jquery'
 declare module 'echarts'
 declare module 'jquery'
+declare module 'vuex-module-decorators'

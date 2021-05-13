@@ -228,13 +228,13 @@ export default class BaiduMap extends Vue {
     //     }
     //   }
     // }
-    // search(){
-    //   // 关键字检索功能
-    //   var local = new BMapGL.LocalSearch(this.map, {
-    //     renderOptions:{map: this.map}
-    //   });
-    //   local.search(this.input);
-    // }
+    search(){
+      // 关键字检索功能
+      // var local = new BMapGL.LocalSearch(this.map, {
+      //   renderOptions:{map: this.map}
+      // });
+      // local.search(this.input);
+    }
   mounted() {
     // this.init();
   }
