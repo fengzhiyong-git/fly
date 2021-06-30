@@ -5,14 +5,11 @@
       <div class="site-name">Mr.Feng's blog</div>
     </div>
     <div class="header-right">
-      <el-input
-        size="small"
-        placeholder="请输入内容"
-        v-model="keyWord">
+      <el-input size="small" placeholder="请输入内容" v-model="keyWord">
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
       </el-input>
       <div class="toHome">
-        <svg-icon icon-class="home" class-name="moreIcon "/>
+        <svg-icon icon-class="home" class-name="moreIcon " />
         <div class="text">首页</div>
       </div>
     </div>
@@ -28,7 +25,7 @@ export default class Header extends Vue {
 }
 </script>
 <style lang="scss" scoped>
-.navbar ::v-deep{
+.navbar ::v-deep {
   width: 100%;
   height: 60px;
   padding: 10px 20px;
@@ -57,12 +54,12 @@ export default class Header extends Vue {
   }
   .header-right {
     display: flex;
-    align-items: center;    
+    align-items: center;
     .toHome {
       margin-left: 16px;
       display: flex;
       align-items: center;
-      .text{
+      .text {
         width: 34px;
         cursor: pointer;
         margin-left: 5px;

@@ -63,6 +63,27 @@ const routes: Array<RouteConfig> = [
         path: "TestTable",
         name: "TestTable",
         component: () => import("@/modules/TestTabel.vue")
+      },
+      {
+        path: "Crypto",
+        name: "Crypto",
+        component: () => import("@/modules/Crypto.vue")
+        // component: () => import("@/modules/SelectTree.vue")
+      },
+      {
+        path: "scroll",
+        name: "TabScroll",
+        component: () => import("@/modules/TabScroll.vue")
+      },
+      {
+        path: "custom",
+        name: "Custom",
+        component: () => import("@/modules/Custom.vue")
+      },
+      {
+        path: "Autograph",
+        name: "Autograph",
+        component: () => import("@/modules/Autograph.vue")
       }
     ]
   }

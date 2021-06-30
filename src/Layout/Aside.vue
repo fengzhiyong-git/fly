@@ -16,7 +16,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Watch } from "vue-property-decorator";
-import { AppModule } from '@/store/modules/app'
+import { AppModule } from "@/store/modules/app";
 @Component({
   name: "Aside",
   components: {}
@@ -26,33 +26,35 @@ export default class Aside extends Vue {
   private dataSource = [
     { name: "柱状图", path: "/Column" },
     { name: "饼状图", path: "/Pie" },
+    { name: "自定义图形", path: "/custom" },
     { name: "省份地图", path: "/Province" },
     { name: "气泡效果", path: "/Bubble" },
     { name: "长沙市", path: "/ChangeSha" },
     { name: "表格合计", path: "/TableNum" },
-    { name: "百度地图", path: "/BaiduMap" },
+    // { name: "百度地图", path: "/BaiduMap" },
     { name: "测试表单验证", path: "/TestTable" },
+    { name: "前端加密", path: "/Crypto" },
+    { name: "tab切换滚动效果", path: "/Scroll" },
+    { name: "签名", path: "/Autograph" }
   ];
   private toPath(i: any, item: any) {
     this.activeIndex = i;
     this.$router.push(item.path);
   }
 
-  get CurrentPath(){
-    return AppModule.CurrentRoutePath
+  get CurrentPath() {
+    return AppModule.CurrentRoutePath;
   }
 
-  @Watch('$route',{ deep: true , immediate: true })
-  getRoute(val:any){
-    if(!val)
-      return false
-    this.dataSource.map((item:any,i:any)=>{
-      if(item.path === val.fullPath){
+  @Watch("$route", { deep: true, immediate: true })
+  getRoute(val: any) {
+    if (!val) return false;
+    this.dataSource.map((item: any, i: any) => {
+      if (item.path === val.fullPath) {
         this.activeIndex = i;
       }
-    })
+    });
   }
- 
 }
 </script>
 <style lang="scss" scoped>

@@ -25,7 +25,7 @@ import { Vue, Component } from "vue-property-decorator";
 import echarts from "echarts";
 import axios from "axios";
 @Component({
-  name: "ChangeSha",
+  name: "ChangeSha"
 })
 export default class ChangeSha extends Vue {
   private data: any = [
@@ -37,7 +37,7 @@ export default class ChangeSha extends Vue {
     { name: "天心区", value: 7, code: 430600 },
     { name: "雨花区", value: 8, code: 430700 },
     { name: "长沙县", value: 9, code: 430800 },
-    { name: "浏阳市", value: 10, code: 430900 },
+    { name: "浏阳市", value: 10, code: 430900 }
   ];
   private options: any = [
     { value: 430100, label: "宁乡市" },
@@ -48,7 +48,7 @@ export default class ChangeSha extends Vue {
     { value: 430600, label: "天心区" },
     { value: 430700, label: "雨花区" },
     { value: 430800, label: "长沙县" },
-    { value: 430900, label: "浏阳市" },
+    { value: 430900, label: "浏阳市" }
   ];
   private value = "";
 
@@ -70,7 +70,7 @@ export default class ChangeSha extends Vue {
                 val.data.value
               );
             }
-          },
+          }
         },
 
         geo: {
@@ -79,46 +79,46 @@ export default class ChangeSha extends Vue {
           zoom: 1.23, //视角缩放比例
           regions: [
             {
-              name: name,   // 动态改变颜色
+              name: name, // 动态改变颜色
               itemStyle: {
                 areaColor: "#ff7044",
                 // color: "red",
-                borderColor: "black", // 边框颜色
-              },
-            },
+                borderColor: "black" // 边框颜色
+              }
+            }
           ],
           label: {
             show: true,
             normal: {
               show: true,
-              color: "#fff",
+              color: "#fff"
             },
             emphasis: {
               show: true,
               fontSize: 16, // 鼠标移入的字体大小
-              color: "#fff",
+              color: "#fff"
             },
-            align: "center",
+            align: "center"
           },
           itemStyle: {
             normal: {
               areaColor: "#2798FA", // 地图板块颜色
-              borderColor: "#fff", // 边框颜色
+              borderColor: "#fff" // 边框颜色
             },
             emphasis: {
               //鼠标移入高亮显颜色
-              areaColor: "#ff7044",
-            },
-          },
+              areaColor: "#ff7044"
+            }
+          }
         },
         series: [
           {
             name: "长沙市",
             type: "map",
             geoIndex: 0,
-            data: this.data,
-          },
-        ],
+            data: this.data
+          }
+        ]
       };
       myChart.setOption(option);
     });

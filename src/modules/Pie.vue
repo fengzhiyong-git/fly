@@ -7,28 +7,28 @@
 import { Vue, Component } from "vue-property-decorator";
 import echarts from "echarts";
 @Component({
-  name: "Pie",
+  name: "Pie"
 })
 export default class Pie extends Vue {
   private myEcharts: any = null;
   private initEcharts() {
-    if (this.myEcharts) this.myEcharts.dispose()
+    if (this.myEcharts) this.myEcharts.dispose();
     this.myEcharts = echarts.init(this.$refs.PieEcharts);
     const option = {
       title: {
         text: "某站点用户访问来源",
         subtext: "纯属虚构",
-        x: "center",
+        x: "center"
       },
       tooltip: {
         trigger: "item",
-        formatter: "{a} <br/>{b} : {c} ({d}%)",
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
       },
       legend: {
         orient: "horizontal",
         // left: "100px",
         top: "80px",
-        data: ["企业", "个体", "社会组织", "事业单位", "机关单位", "其他"],
+        data: ["企业", "个体", "社会组织", "事业单位", "机关单位", "其他"]
       },
       // 设置饼状图的颜色
       color: ["red", "orange", "yellow", "green", "blue", "indigo", "purple"],
@@ -44,31 +44,31 @@ export default class Pie extends Vue {
             { value: 15, name: "社会组织" },
             { value: 25, name: "事业单位" },
             { value: 20, name: "机关单位" },
-            { value: 20, name: "其他" },
+            { value: 20, name: "其他" }
           ],
           /*在series中添加itemStyle即可直观显示饼型数值*/
           itemStyle: {
             normal: {
               label: {
                 show: true,
-                formatter: "{b} : {c} ",
+                formatter: "{b} : {c} "
               },
-              labelLine: { show: true },
-            },
-          },
-        },
-      ],
+              labelLine: { show: true }
+            }
+          }
+        }
+      ]
     };
     this.myEcharts.setOption(option);
-    const that = this as any
+    const that = this as any;
     setTimeout(() => {
       window.onresize = function() {
         that.myEcharts.resize();
       };
     }, 200);
   }
-  mounted(){
-    this.initEcharts()
+  mounted() {
+    this.initEcharts();
   }
 }
 </script>

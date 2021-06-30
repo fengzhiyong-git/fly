@@ -7,12 +7,12 @@
 import { Vue, Component } from "vue-property-decorator";
 import echarts from "echarts";
 @Component({
-  name: "Column",
+  name: "Column"
 })
 export default class Column extends Vue {
-  private myEcharts:any = null
+  private myEcharts: any = null;
   private charts() {
-    if (this.myEcharts) this.myEcharts.dispose()
+    if (this.myEcharts) this.myEcharts.dispose();
     //初始化echarts实例
     this.myEcharts = echarts.init(this.$refs.ColumnEcharts);
     //对echarts做基础配置
@@ -22,8 +22,8 @@ export default class Column extends Vue {
         text: "echarts 柱状图",
         textStyle: {
           color: "red",
-          fontSize: "20",
-        },
+          fontSize: "20"
+        }
       },
       // 鼠标移入的提示框
       tooltip: {
@@ -31,11 +31,11 @@ export default class Column extends Vue {
         // 鼠标移入柱状图的阴影
         trigger: "axis", // 触发类型  axis 坐标轴触发   item  散点图 数据触发
         axisPointer: {
-          type: "shadow", // 指示器类型  shadow 阴影  line 直线  cross 十字准星
+          type: "shadow" // 指示器类型  shadow 阴影  line 直线  cross 十字准星
           // shadowStyle: {
           //   // color: '#999'
           // }
-        },
+        }
       },
       // 工具栏  按钮
       toolbox: {
@@ -43,8 +43,8 @@ export default class Column extends Vue {
           dataView: { show: true, readOnly: false }, // 数据视图
           magicType: { show: true, type: ["line", "bar"] }, // 动态类型切换  type  折线  柱状
           restore: { show: true }, // 配置项还原
-          saveAsImage: { show: true }, // 保存为图片
-        },
+          saveAsImage: { show: true } // 保存为图片
+        }
       },
       // 图例组件
       legend: {
@@ -52,11 +52,11 @@ export default class Column extends Vue {
         orient: "horizontal", //图例列表的布局朝向。 horizontal 水平   vertical 垂直
         right: "300px", // 组件位置的调整
         top: "0px",
-        icon: "circle", // 前面的图标设置为圆形
+        icon: "circle" // 前面的图标设置为圆形
       },
       // 表格组件
       grid: {
-        right: "30%", // 位置的调整   top  left  ...
+        right: "30%" // 位置的调整   top  left  ...
       },
       //x轴的文本
       xAxis: {
@@ -65,8 +65,8 @@ export default class Column extends Vue {
         axisLabel: {
           // 左边轴文字倾斜  ##
           interval: 0,
-          rotate: 45, // 角度
-        },
+          rotate: 45 // 角度
+        }
       },
       // xAxis: [
       //   {
@@ -146,17 +146,17 @@ export default class Column extends Vue {
           interval: 10,
           // minInterval: 4,  // Y轴设置刻度最小间隔
           axisLabel: {
-            formatter: "{value} 件",
+            formatter: "{value} 件"
           },
 
           axisLine: {
             // 单独隐藏坐标轴
-            show: false,
+            show: false
           },
           axisTick: {
             // 单独隐藏刻度线
-            show: false,
-          },
+            show: false
+          }
         },
         {
           type: "value",
@@ -165,17 +165,17 @@ export default class Column extends Vue {
           max: 50,
           interval: 10,
           axisLabel: {
-            formatter: "{value} 元",
+            formatter: "{value} 元"
           },
           axisLine: {
             // 单独隐藏坐标轴
-            show: false,
+            show: false
           },
           axisTick: {
             // 单独隐藏刻度线
-            show: false,
-          },
-        },
+            show: false
+          }
+        }
       ],
       // 数据的配置
       series: [
@@ -194,11 +194,11 @@ export default class Column extends Vue {
                 textStyle: {
                   //数值样式
                   color: "black",
-                  fontSize: 16,
-                },
-              },
-            },
-          },
+                  fontSize: 16
+                }
+              }
+            }
+          }
         },
         {
           name: "价格",
@@ -215,11 +215,11 @@ export default class Column extends Vue {
                 textStyle: {
                   //数值样式
                   color: "black",
-                  fontSize: 16,
-                },
-              },
-            },
-          },
+                  fontSize: 16
+                }
+              }
+            }
+          }
         },
         {
           name: "温度",
@@ -232,11 +232,11 @@ export default class Column extends Vue {
             normal: {
               color: "red", // 设置折线点的颜色
               lineStyle: {
-                color: "#00FF00", // 修改折线图线的颜色
-              },
-            },
-          },
-        },
+                color: "#00FF00" // 修改折线图线的颜色
+              }
+            }
+          }
+        }
       ],
       dataZoom: [
         //实现缩放功能
@@ -248,18 +248,18 @@ export default class Column extends Vue {
           show: true, //显示缩放条
           type: "inside",
           start: 1,
-          end: 100,
-        },
-      ],
+          end: 100
+        }
+      ]
     };
     this.myEcharts.setOption(option);
     // $(window).resize(function() {
     //   (this as any).myEcharts.resize();
     // });
 
-    window.addEventListener('resize', () => {
-      this.myEcharts.resize()
-    })
+    window.addEventListener("resize", () => {
+      this.myEcharts.resize();
+    });
   }
   mounted() {
     this.charts();

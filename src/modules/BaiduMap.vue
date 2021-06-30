@@ -1,8 +1,13 @@
 <template>
-    <!-- 百度地图 -->
+  <!-- 百度地图 -->
   <div class="map">
     <div>百度地图</div>
-    <el-input class="inputBox" @change="search" v-model="input" placeholder="请输入内容"></el-input>
+    <el-input
+      class="inputBox"
+      @change="search"
+      v-model="input"
+      placeholder="请输入内容"
+    ></el-input>
     <div class="configuration">
       <div
         class="t-center mb-8px pointer"
@@ -24,18 +29,18 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch } from "vue-property-decorator";
 
 @Component({
-  name: 'BaiduMap'
+  name: "BaiduMap"
 })
 export default class BaiduMap extends Vue {
   private input = "";
-  private map:any = null;
-  private point:any = null;
-  private centerMarker:any = null;
+  private map: any = null;
+  private point: any = null;
+  private centerMarker: any = null;
   private showConfig = false;
-  private list:any = {
+  private list: any = {
     公交: [],
     地铁: [],
     超市: [],
@@ -43,8 +48,8 @@ export default class BaiduMap extends Vue {
     银行: [],
     学校: [],
     医院: []
-  }
-  private configList:any = [
+  };
+  private configList: any = [
     {
       name: "公交",
       value: "",
@@ -80,7 +85,7 @@ export default class BaiduMap extends Vue {
       value: "",
       icon: require("@/assets/map/yy.png")
     }
-  ]
+  ];
 
   // 初始化
   // private init(){
@@ -180,61 +185,61 @@ export default class BaiduMap extends Vue {
   //       this.initMarker();
   //     }
   //   }
-    clickHandler(){
-      this.showConfig = !this.showConfig;
-    }
-    // initMarker() {      // 周边服务
-    //   this.map.clearOverlays()
-    //   this.map.addOverlay(this.centerMarker)
-    //   // 创建信息窗口
-    //   var opts = {
-    //     width: 'auto',
-    //     height: 'auto',
-    //     title: '麓谷企业广场',
-    //   }
-    //   var infoWindow = new BMapGL.InfoWindow('岳麓区', opts)
-    //   this.centerMarker.addEventListener('click', () => {
-    //     this.map.openInfoWindow(infoWindow, this.point)
-    //   })
-    //   for (let k in this.List) {
-    //     if (this.List[k].length > 0) {
-    //       let icons = this.configList.filter(val => {
-    //         return k === val.name
-    //       }).map(v => {
-    //         return v.icon
-    //       })
-    //       this.List[k].forEach((item) => {
-    //         var Icon = new BMapGL.Icon(
-    //           icons[0],
-    //           new BMapGL.Size(26, 26)
-    //         )
-    //         var pt = new BMapGL.Point(item.point.lng, item.point.lat)
-    //         var marker = new BMapGL.Marker(pt, {
-    //           icon: Icon,
-    //         })
-    //         // 将标注添加到地图
-    //         this.map.addOverlay(marker)
-    //         // 创建信息窗口
-    //         var opts = {
-    //           width: 'auto',
-    //           height: 'auto',
-    //           title: item.title,
-    //         }
-    //         var infoWindow = new BMapGL.InfoWindow(item.address, opts)
-    //         marker.addEventListener('click', () => {
-    //           this.map.openInfoWindow(infoWindow, pt)
-    //         })
-    //       })
-    //     }
-    //   }
-    // }
-    search(){
-      // 关键字检索功能
-      // var local = new BMapGL.LocalSearch(this.map, {
-      //   renderOptions:{map: this.map}
-      // });
-      // local.search(this.input);
-    }
+  clickHandler() {
+    this.showConfig = !this.showConfig;
+  }
+  // initMarker() {      // 周边服务
+  //   this.map.clearOverlays()
+  //   this.map.addOverlay(this.centerMarker)
+  //   // 创建信息窗口
+  //   var opts = {
+  //     width: 'auto',
+  //     height: 'auto',
+  //     title: '麓谷企业广场',
+  //   }
+  //   var infoWindow = new BMapGL.InfoWindow('岳麓区', opts)
+  //   this.centerMarker.addEventListener('click', () => {
+  //     this.map.openInfoWindow(infoWindow, this.point)
+  //   })
+  //   for (let k in this.List) {
+  //     if (this.List[k].length > 0) {
+  //       let icons = this.configList.filter(val => {
+  //         return k === val.name
+  //       }).map(v => {
+  //         return v.icon
+  //       })
+  //       this.List[k].forEach((item) => {
+  //         var Icon = new BMapGL.Icon(
+  //           icons[0],
+  //           new BMapGL.Size(26, 26)
+  //         )
+  //         var pt = new BMapGL.Point(item.point.lng, item.point.lat)
+  //         var marker = new BMapGL.Marker(pt, {
+  //           icon: Icon,
+  //         })
+  //         // 将标注添加到地图
+  //         this.map.addOverlay(marker)
+  //         // 创建信息窗口
+  //         var opts = {
+  //           width: 'auto',
+  //           height: 'auto',
+  //           title: item.title,
+  //         }
+  //         var infoWindow = new BMapGL.InfoWindow(item.address, opts)
+  //         marker.addEventListener('click', () => {
+  //           this.map.openInfoWindow(infoWindow, pt)
+  //         })
+  //       })
+  //     }
+  //   }
+  // }
+  search() {
+    // 关键字检索功能
+    // var local = new BMapGL.LocalSearch(this.map, {
+    //   renderOptions:{map: this.map}
+    // });
+    // local.search(this.input);
+  }
   mounted() {
     // this.init();
   }
@@ -242,18 +247,18 @@ export default class BaiduMap extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.map /deep/{
+.map /deep/ {
   position: relative;
-  .inputBox{
+  .inputBox {
     width: 300px;
     position: absolute;
     right: 50px;
     top: 30px;
   }
-  ul{
+  ul {
     margin: 0;
     padding: 0;
-    li{
+    li {
       list-style: none;
     }
   }

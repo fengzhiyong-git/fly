@@ -8,23 +8,23 @@ import { Vue, Component } from "vue-property-decorator";
 import echarts from "echarts";
 import axios from "axios";
 @Component({
-  name: "Province",
+  name: "Province"
 })
 export default class Province extends Vue {
   private geoCoordMap = {
-    '遂平县': [114.015819, 33.150944],
-    '上蔡县': [114.276256, 33.267906],
-    '西平县': [114.022143, 33.394355],
-    '驿城区': [114.006045, 32.978599],
-    '确山县': [114.033641, 32.810768],
-    '泌阳县': [113.335694, 32.731107],
-    '汝南县': [114.375141, 33.016389],
-    '正阳县': [114.398138, 32.615372],
-    '平舆县': [114.629254, 32.969876],
-    '新蔡县': [114.979952, 32.752487]
-  }
-  private mapData:any = [ ]
-  private mapOptions:any = {
+    遂平县: [114.015819, 33.150944],
+    上蔡县: [114.276256, 33.267906],
+    西平县: [114.022143, 33.394355],
+    驿城区: [114.006045, 32.978599],
+    确山县: [114.033641, 32.810768],
+    泌阳县: [113.335694, 32.731107],
+    汝南县: [114.375141, 33.016389],
+    正阳县: [114.398138, 32.615372],
+    平舆县: [114.629254, 32.969876],
+    新蔡县: [114.979952, 32.752487]
+  };
+  private mapData: any = [];
+  private mapOptions: any = {
     toolbox: {
       show: false
     },
@@ -33,19 +33,14 @@ export default class Province extends Vue {
       right: 0
     },
     tooltip: {
-      trigger: 'item',
+      trigger: "item",
       formatter: function(params: any) {
-        if(params.data !== undefined){
-          const data = params.data
+        if (params.data !== undefined) {
+          const data = params.data;
           return (
-            data.name +
-            '</br>' +
-            params.marker +
-            '备案项目数量：' +
-            data.value 
-          )
+            data.name + "</br>" + params.marker + "备案项目数量：" + data.value
+          );
         }
-
       }
     },
     visualMap: [
@@ -56,20 +51,20 @@ export default class Province extends Vue {
         // itemWidth: 12,
         min: 0,
         max: 20,
-        text: ['20', '0'],
+        text: ["20", "0"],
         // textStyle: {
         //     color: '#ddd'
         // },
         inRange: {
-          color: ['#2799FB', '#237AEB', '#123B9C']
+          color: ["#2799FB", "#237AEB", "#123B9C"]
         }
       }
     ],
     series: [
       {
-        name: '湖南省',
-        type: 'map',
-        mapType: 'hunan',
+        name: "湖南省",
+        type: "map",
+        mapType: "hunan",
         zoom: 1.15,
         aspectScale: 0.95, //长宽比
         // label: {
@@ -87,7 +82,7 @@ export default class Province extends Vue {
         // },
         label: {
           show: true,
-          formatter: function (params:any) {
+          formatter: function(params: any) {
             return (
               "{a|" +
               params.name +
@@ -101,26 +96,26 @@ export default class Province extends Vue {
           rich: {
             a: {
               color: "#ffffff",
-              fontSize: 12,
+              fontSize: 12
             },
             b: {
               fontSize: 12,
               color: "#1058D1",
               backgroundColor: "ffffff",
               padding: [0, 7, 2, 7],
-              borderRadius: 7,
-            },
-          },
+              borderRadius: 7
+            }
+          }
         },
         itemStyle: {
           normal: {
             // areaColor: '#2798FA',
-            areaColor: '#D3DEFF',
-            borderColor: '#fff'
+            areaColor: "#D3DEFF",
+            borderColor: "#fff"
           },
           emphasis: {
             //鼠标移入高亮显颜色
-            areaColor: '#ff7044'
+            areaColor: "#ff7044"
           }
         },
         data: this.mapData,
@@ -129,73 +124,73 @@ export default class Province extends Vue {
           shodowoffsetY: 0,
           shadowBlur: 0,
           borderWidth: 1,
-          shadowColor: '#ff3dd',
-          areaColor: '#ff7044',
+          shadowColor: "#ff3dd",
+          areaColor: "#ff7044",
           lable: {
             show: true,
             textStyle: {
-              color: '#fff'
+              color: "#fff"
             }
           }
         }
-      },      
+      }
     ]
-  }
+  };
 
   private initMapEcharts(params: any) {
-     //数据信息 s
-      const data = [
-        { name: '长沙市', value: 2, code: 430100 },
-        { name: '株洲市', value: 3, code: 430200 },
-        { name: '湘潭市', value: 4, code: 430300 },
-        { name: '衡阳市', value: 5, code: 430400 },
-        { name: '邵阳市', value: 6, code: 430500 },
-        { name: '岳阳市', value: 7, code: 430600 },
-        { name: '常德市', value: 8, code: 430700 },
-        { name: '张家界市', value: 9, code: 430800 },
-        { name: '益阳市', value: 10, code: 430900},
-        { name: '郴州市', value: 11, code: 431000 },
-        { name: '永州市', value: 12, code: 431100 },
-        { name: '怀化市', value: 13, code: 431200 },
-        { name: '娄底市', value: 14, code: 431300 },
-        { name: '湘西州', value: 15, code: 433100 }
-      ];
-      // 地理位置信息  经纬度
-      const geoCoordMap:any = {
-          '长沙市': [112.982279, 28.19409],
-          '株洲市': [113.51737, 27.135806],
-          '湘潭市': [112.684052, 27.72973],
-          '衡阳市': [112.607693, 26.900358],
-          '邵阳市': [110.86923, 26.837842],
-          '岳阳市': [113.232855, 29.07029],
-          '常德市': [111.691347, 29.040225],
-          '张家界市': [110.579921, 29.327401],
-          '益阳市': [112.055042, 28.470066],
-          '郴州市': [113.032067, 25.793589],
-          '永州市': [111.818019, 25.834516],
-          '怀化市': [109.97824, 27.550082],
-          '娄底市': [111.708497, 27.728136],
-          '湘西州': [109.73893, 28.61163],
-      };
+    //数据信息 s
+    const data = [
+      { name: "长沙市", value: 2, code: 430100 },
+      { name: "株洲市", value: 3, code: 430200 },
+      { name: "湘潭市", value: 4, code: 430300 },
+      { name: "衡阳市", value: 5, code: 430400 },
+      { name: "邵阳市", value: 6, code: 430500 },
+      { name: "岳阳市", value: 7, code: 430600 },
+      { name: "常德市", value: 8, code: 430700 },
+      { name: "张家界市", value: 9, code: 430800 },
+      { name: "益阳市", value: 10, code: 430900 },
+      { name: "郴州市", value: 11, code: 431000 },
+      { name: "永州市", value: 12, code: 431100 },
+      { name: "怀化市", value: 13, code: 431200 },
+      { name: "娄底市", value: 14, code: 431300 },
+      { name: "湘西州", value: 15, code: 433100 }
+    ];
+    // 地理位置信息  经纬度
+    const geoCoordMap: any = {
+      长沙市: [112.982279, 28.19409],
+      株洲市: [113.51737, 27.135806],
+      湘潭市: [112.684052, 27.72973],
+      衡阳市: [112.607693, 26.900358],
+      邵阳市: [110.86923, 26.837842],
+      岳阳市: [113.232855, 29.07029],
+      常德市: [111.691347, 29.040225],
+      张家界市: [110.579921, 29.327401],
+      益阳市: [112.055042, 28.470066],
+      郴州市: [113.032067, 25.793589],
+      永州市: [111.818019, 25.834516],
+      怀化市: [109.97824, 27.550082],
+      娄底市: [111.708497, 27.728136],
+      湘西州: [109.73893, 28.61163]
+    };
 
-      const convertData = function(data:any) {
-        const res = [];
-        for (let i = 0; i < data.length; i++) {
-          const geoCoord = geoCoordMap[data[i].name];
-          if (geoCoord) {
-            res.push({
-              name: data[i].name,
-              value: geoCoord.concat(data[i].value)
-            });
-          }
+    const convertData = function(data: any) {
+      const res = [];
+      for (let i = 0; i < data.length; i++) {
+        const geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+          res.push({
+            name: data[i].name,
+            value: geoCoord.concat(data[i].value)
+          });
         }
-        return res;
-      };
+      }
+      return res;
+    };
 
-    const myChart = echarts.init(this.$refs.province)
-    axios.get(`/static/mapJson/${params.name}.json`).then((res:any) => {
-      echarts.registerMap("hunan", res.data)   
-      let option = null
+    const myChart = echarts.init(this.$refs.province);
+    axios.get(`/static/mapJson/${params.name}.json`).then((res: any) => {
+      echarts.registerMap("hunan", res.data);
+      let option = null;
       option = {
         // backgroundColor: {
         //   type: "linear",
@@ -217,7 +212,7 @@ export default class Province extends Vue {
         // },
         tooltip: {
           trigger: "item",
-          formatter: function(params:any) {
+          formatter: function(params: any) {
             if (typeof params.value[2] == "undefined") {
               return params.name + " : " + params.value;
             } else {
@@ -250,7 +245,7 @@ export default class Province extends Vue {
           show: true,
           roam: true,
           // center: [114.006045, 32.978599],  // 驿城区
-          center: [111.708497, 27.728136],  // 娄底市
+          center: [111.708497, 27.728136], // 娄底市
           zoom: 1, //当前视角缩放比例
           label: {
             normal: {
@@ -263,12 +258,12 @@ export default class Province extends Vue {
           itemStyle: {
             normal: {
               // areaColor: '#2798FA',
-              areaColor: '#237AEB',
-              borderColor: '#fff'
+              areaColor: "#237AEB",
+              borderColor: "#fff"
             },
             emphasis: {
               //鼠标移入高亮显颜色
-              areaColor: '#ff7044'
+              areaColor: "#ff7044"
             }
             // normal: {
             //   areaColor: "#3a7fd5",
@@ -324,11 +319,11 @@ export default class Province extends Vue {
             roam: true,
             itemStyle: {
               normal: {
-                areaColor: '#D3DEFF',
-                borderColor: '#fff'
+                areaColor: "#D3DEFF",
+                borderColor: "#fff"
               },
               emphasis: {
-                areaColor: '#ff7044'
+                areaColor: "#ff7044"
               }
             },
             emphasis: {
@@ -336,12 +331,12 @@ export default class Province extends Vue {
               shodowoffsetY: 0,
               shadowBlur: 0,
               borderWidth: 1,
-              shadowColor: '#ff3dd',
-              areaColor: '#ff7044',
+              shadowColor: "#ff3dd",
+              areaColor: "#ff7044",
               lable: {
                 show: true,
                 textStyle: {
-                  color: '#fff'
+                  color: "#fff"
                 }
               }
             },
@@ -361,7 +356,7 @@ export default class Province extends Vue {
                   color: "#fff",
                   fontSize: 9
                 },
-                formatter(value:any) {
+                formatter(value: any) {
                   return value.data.value[2];
                 }
               }
@@ -380,17 +375,17 @@ export default class Province extends Vue {
             zlevel: 1
           }
         ]
-      }; 
-      ;(myChart as any).setOption(option)      
-    })
+      };
+      (myChart as any).setOption(option);
+    });
   }
   mounted() {
-    this.$nextTick(() => { 
+    this.$nextTick(() => {
       this.initMapEcharts({
-        name: '湖南省',
+        name: "湖南省",
         code: 430000
-      })
-    })
+      });
+    });
   }
 }
 </script>

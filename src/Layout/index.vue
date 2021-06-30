@@ -30,7 +30,7 @@ export default class Home extends Vue {}
     margin-left: 300px;
     padding: 24px;
     box-sizing: border-box;
-    overflow-y: auto;
+    // overflow-y: auto;
   }
 }
 </style>
