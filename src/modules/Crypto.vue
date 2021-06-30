@@ -5,7 +5,7 @@
     <div>解密 {{ b }}</div>
     <div>{{ time }}</div>
 
-    <select-tree></select-tree>
+    <select-tree :tree-data="options"></select-tree>
   </div>
 </template>
 <script>
@@ -23,7 +23,47 @@ export default {
       msg: "123456",
       a: "",
       b: "",
-      time: ""
+      time: "",
+      options: [
+        {
+          id: "1",
+          name: "湖南省",
+          children: [
+            {
+              id: "4",
+              name: "长沙市",
+              isDisabled: true
+            },
+            {
+              id: "5",
+              name: "永州市",
+              // 默认展开
+              isDefaultExpanded: true,
+              children: [
+                {
+                  id: "6",
+                  name: "零陵区"
+                },
+                {
+                  id: "7",
+                  name: "宁远县",
+                  isNew: true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "2",
+          name: "湖北省",
+          children: [
+            {
+              id: "8",
+              name: "武汉市"
+            }
+          ]
+        }
+      ]
     };
   },
   created() {

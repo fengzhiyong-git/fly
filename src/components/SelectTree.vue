@@ -4,7 +4,7 @@
     <treeselect
       v-model="value"
       placeholder="请选择"
-      :options="options"
+      :options="treeData"
       :normalizer="normalizer"
       :default-expand-level="1"
       @select="select"
@@ -34,7 +34,7 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Prop, Component } from "vue-property-decorator";
 // import the component
 import Treeselect from "@riophae/vue-treeselect";
 // import the styles
@@ -45,6 +45,9 @@ import "@riophae/vue-treeselect/dist/vue-treeselect.css";
   components: { Treeselect }
 })
 export default class SelectTree extends Vue {
+  @Prop() private treeData!: any[];
+  @Prop({ default: true }) private showOperating!: boolean;
+
   private value = null; // 初始值必须设置为null 不然会默认显示 unknown
   private normalizer(node: any) {
     return {
