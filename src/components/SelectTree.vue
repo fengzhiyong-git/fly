@@ -104,4 +104,28 @@ export default class SelectTree extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.BaseTreeSelect::v-deep {
+  width: 150px;
+  .vue-treeselect__control {
+    height: 32px;
+    line-height: 30.5px;
+    font-size: 14px;
+    .vue-treeselect__value-container {
+      font-size: 14px;
+      .vue-treeselect__single-value {
+        line-height: 30px;
+      }
+    }
+  }
+  .vue-treeselect__menu-container {
+    font-size: 14px;
+    .vue-treeselect__menu {
+      font-size: 14px;
+    }
+  }
+  .vue-treeselect__placeholder {
+    line-height: 30px;
+  }
+}
+</style>
