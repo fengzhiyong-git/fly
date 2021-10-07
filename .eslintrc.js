@@ -19,7 +19,7 @@ module.exports = {
     "no-console": 0,
     "no-debugger": 0,
     // 控制结尾符号,使用unix风格
-    "linebreak-style": ["error", "unix"],
+    // "linebreak-style": ["error", "unix"],
     // 关闭没有使用的变量,js版
     "no-unused-var": 0,
     "@typescript-eslint/no-unused-vars": 0,
@@ -50,9 +50,9 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/consistent-type-assertions": 0,
     // 不限制apply()
-    "prefer-spread": 0
+    "prefer-spread": 0,
     // 处理换行符
-    // "linebreak-style": ["off", "windows"]
+    "linebreak-style": ["off", "windows"]
   },
   parserOptions: {
     parser: "@typescript-eslint/parser"

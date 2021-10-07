@@ -84,7 +84,12 @@ const routes: Array<RouteConfig> = [
         path: "Autograph",
         name: "Autograph",
         component: () => import("@/modules/Autograph.vue")
-      }
+      },
+      {
+        path: "TableType",
+        name: "TableType",
+        component: () => import("@/modules/TableType.vue")
+      },
     ]
   }
 ];

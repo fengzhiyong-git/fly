@@ -35,7 +35,8 @@ export default class Aside extends Vue {
     { name: "测试表单验证", path: "/TestTable" },
     { name: "前端加密", path: "/Crypto" },
     { name: "tab切换滚动效果", path: "/Scroll" },
-    { name: "签名", path: "/Autograph" }
+    { name: "签名", path: "/Autograph" },
+    { name: "折叠表单", path: "/TableType" },
   ];
   private toPath(i: any, item: any) {
     this.activeIndex = i;
