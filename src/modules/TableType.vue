@@ -13,7 +13,8 @@
         <template slot-scope="scope">
           <span v-if="scope.row.children.length || !scope.row.zxm">
             <!-- {{ scope.row.deptName }} -->
-            长沙市城市发展集团项目建设有限公司 共计 5 个项目 新建 4 个 总投资 34.23万元
+            长沙市城市发展集团项目建设有限公司 共计 5 个项目 新建 4 个 总投资
+            34.23万元
           </span>
           <div v-else style="display:flex">
             <span>{{ scope.row.areaName }}</span>
@@ -30,7 +31,7 @@
 import { Vue, Component, Watch } from "vue-property-decorator";
 
 @Component({
-  name: "TableType"
+  name: "TableType",
 })
 export default class TableType extends Vue {
   private data = [
@@ -70,7 +71,7 @@ export default class TableType extends Vue {
               areaName: "岳麓区",
               address: "地址3",
               zxm: true,
-              children: []
+              children: [],
             },
             {
               deptId: "38",
@@ -84,9 +85,9 @@ export default class TableType extends Vue {
               areaCode: "430102",
               areaName: "芙蓉区",
               address: "地址4",
-              children: []
-            }
-          ]
+              children: [],
+            },
+          ],
         },
         {
           deptId: "40",
@@ -99,10 +100,10 @@ export default class TableType extends Vue {
           areaCode: null,
           areaName: "芙蓉区",
           address: null,
-          children: []
-        }
-      ]
-    }
+          children: [],
+        },
+      ],
+    },
   ];
 
   private tableData = [
@@ -113,7 +114,7 @@ export default class TableType extends Vue {
       desc: "荷兰优质淡奶，奶香浓而不腻",
       address: "上海市普陀区真北路",
       shop: "王小虎夫妻店",
-      shopId: "10333"
+      shopId: "10333",
     },
     {
       id: "12987123",
@@ -122,7 +123,7 @@ export default class TableType extends Vue {
       desc: "荷兰优质淡奶，奶香浓而不腻",
       address: "上海市普陀区真北路",
       shop: "王小虎夫妻店",
-      shopId: "10333"
+      shopId: "10333",
     },
     {
       id: "12987125",
@@ -131,7 +132,7 @@ export default class TableType extends Vue {
       desc: "荷兰优质淡奶，奶香浓而不腻",
       address: "上海市普陀区真北路",
       shop: "王小虎夫妻店",
-      shopId: "10333"
+      shopId: "10333",
     },
     {
       id: "12987126",
@@ -140,25 +141,13 @@ export default class TableType extends Vue {
       desc: "荷兰优质淡奶，奶香浓而不腻",
       address: "上海市普陀区真北路",
       shop: "王小虎夫妻店",
-      shopId: "10333"
-    }
+      shopId: "10333",
+    },
   ];
 }
 </script>
 
 <style lang="scss" scoped>
-.demo-table-expand {
-  font-size: 0;
-}
-.demo-table-expand label {
-  width: 90px;
-  color: #99a9bf;
-}
-.demo-table-expand .el-form-item {
-  margin-right: 0;
-  margin-bottom: 0;
-  width: 50%;
-}
 ::v-deep .el-table th {
   background-color: #f5f7f9 !important;
   height: 0px;

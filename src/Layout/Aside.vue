@@ -19,7 +19,7 @@ import { Vue, Component, Watch } from "vue-property-decorator";
 import { AppModule } from "@/store/modules/app";
 @Component({
   name: "Aside",
-  components: {}
+  components: {},
 })
 export default class Aside extends Vue {
   private activeIndex = 0;
@@ -37,6 +37,7 @@ export default class Aside extends Vue {
     { name: "tab切换滚动效果", path: "/Scroll" },
     { name: "签名", path: "/Autograph" },
     { name: "折叠表单", path: "/TableType" },
+    { name: "打印", path: "/Print" },
   ];
   private toPath(i: any, item: any) {
     this.activeIndex = i;
