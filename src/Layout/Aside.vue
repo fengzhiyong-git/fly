@@ -38,6 +38,8 @@ export default class Aside extends Vue {
     { name: "签名", path: "/Autograph" },
     { name: "折叠表单", path: "/TableType" },
     { name: "打印", path: "/Print" },
+    { name: "甘特图", path: "/Gantt" },
+    { name: "中国地图", path: "/China" },
   ];
   private toPath(i: any, item: any) {
     this.activeIndex = i;

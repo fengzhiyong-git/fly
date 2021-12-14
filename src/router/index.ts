@@ -95,6 +95,16 @@ const routes: Array<RouteConfig> = [
         name: "Print",
         component: () => import("@/modules/Print.vue"),
       },
+      {
+        path: "Gantt",
+        name: "Gantt",
+        component: () => import("@/modules/Gantt.vue"),
+      },
+      {
+        path: "China",
+        name: "China",
+        component: () => import("@/modules/China.vue"),
+      },
     ],
   },
 ];

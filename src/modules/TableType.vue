@@ -1,25 +1,126 @@
 <template>
   <!-- 折叠自定义表单内容 -->
-  <div>
+  <div class="com-list-body">
     <el-table
-      :data="data"
-      style="width: 100%"
-      default-expand-all
+      :data="tableData"
       row-key="deptId"
       :header-cell-style="{ display: 'none' }"
       :tree-props="{ children: 'children', hasChildren: 'children.length>0' }"
     >
-      <el-table-column label="商品 ID" prop="deptName">
+      <el-table-column label="公司名称" prop="deptName">
         <template slot-scope="scope">
-          <span v-if="scope.row.children.length || !scope.row.zxm">
-            <!-- {{ scope.row.deptName }} -->
-            长沙市城市发展集团项目建设有限公司 共计 5 个项目 新建 4 个 总投资
-            34.23万元
-          </span>
-          <div v-else style="display:flex">
-            <span>{{ scope.row.areaName }}</span>
-            <span>{{ scope.row.areaName }}</span>
-            <span>{{ scope.row.areaName }}</span>
+          <!-- v-if="!scope.row.projects.length" !scope.row.zxm-->
+          <div v-if="!scope.row.projects" class="column-wrap">
+            <div class="text">{{ scope.row.deptName }}</div>
+            <div class="small-text">
+              共计
+              <span class="count">{{ scope.row.projectNumber }}</span>
+              个项目（新建项目
+              <span class="count">{{ scope.row.xjProjectNumber }}</span>
+              个，续建项目
+              <span class="count">{{ scope.row.xujProjectNumber }}</span> 个
+              ）<span class="line">|</span>总投资：
+              <span class="count">{{ scope.row.totalMoney }}</span> 万元<span
+                class="line"
+                >|</span
+              >{{ $route.query.planYear }}年计划投资：<span class="count">{{
+                scope.row.planMoney
+              }}</span>
+              万元
+            </div>
+          </div>
+          <div v-else class="project-wrap">
+            <div
+              class="project-item"
+              v-for="(item, index) in scope.row.projects"
+              :key="index"
+            >
+              <div class="top-wrap">
+                <el-checkbox
+                  v-model="item.isChecked"
+                  @change="getSelectData(item)"
+                ></el-checkbox>
+                <div class="title-text">
+                  <span class="index">{{ index + 1 }}</span> {{ item.prjName }}
+                </div>
+
+                <el-button type="text" @click="btnClick('审核', item)">
+                  审核
+                </el-button>
+              </div>
+              <div class="content">
+                <el-row>
+                  <el-col :span="8">
+                    <span class="text">项目类型：</span>
+                    <span class="value">{{ item.prjTypeName }}</span>
+                  </el-col>
+                  <el-col :span="8">
+                    <span class="text">项目区域：</span>
+                    <span class="value">{{ item.prjAreaName }}</span>
+                  </el-col>
+                  <el-col :span="8">
+                    <span class="text">建设性质：</span>
+                    <span class="value">{{
+                      item.planConstructionNatureName
+                    }}</span>
+                  </el-col>
+
+                  <el-col :span="8">
+                    <span class="text">建设内容和规模：</span>
+                    <span class="value">{{
+                      item.planConstructionContent
+                    }}</span>
+                  </el-col>
+                  <el-col :span="8">
+                    <span class="text">总投资（万）：</span>
+                    <span class="value">{{ item.planTotalMoney }}</span>
+                  </el-col>
+                  <el-col :span="8">
+                    <span class="text">本年度计划投资（万）：</span>
+                    <span class="value">{{ item.planPlanMoney }}</span>
+                  </el-col>
+
+                  <el-col :span="8">
+                    <span class="text">办理状态：</span>
+                    <span class="value">
+                      {{
+                        item.planHandleStateId === "blzt_blz"
+                          ? "办理中"
+                          : item.planHandleStateId === "blzt_ybj"
+                          ? "已办结"
+                          : "--"
+                      }}
+                    </span>
+                  </el-col>
+                  <el-col :span="8">
+                    <span class="text">当前状态：</span>
+                    <span class="value">{{ item.curStateName }}</span>
+                  </el-col>
+                  <el-col :span="8">
+                    <span class="text">审批意见：</span>
+                    <span class="value">{{ item.lastOpinion }}</span>
+                  </el-col>
+
+                  <el-col :span="8">
+                    <span class="text">审批历史：</span>
+                    <span class="value">
+                      <el-button type="text" @click="openRecord(item)"
+                        >查看</el-button
+                      >
+                    </span>
+                  </el-col>
+
+                  <el-col :span="24">
+                    <span class="text">申报附件：</span>
+                    <span class="value">
+                      --
+                      <!-- <img src="@/assets/filetype/icon_ppt.png" alt="文件类型图标" />
+                                <span class="file-text">附件1</span> -->
+                    </span>
+                  </el-col>
+                </el-row>
+              </div>
+            </div>
           </div>
         </template>
       </el-table-column>
@@ -30,11 +131,12 @@
 <script lang="ts">
 import { Vue, Component, Watch } from "vue-property-decorator";
 
+import axios from "axios";
 @Component({
   name: "TableType",
 })
 export default class TableType extends Vue {
-  private data = [
+  private tableData = [
     {
       deptId: "34",
       parentId: "-1",
@@ -106,44 +208,17 @@ export default class TableType extends Vue {
     },
   ];
 
-  private tableData = [
-    {
-      id: "12987122",
-      name: "好滋好味鸡蛋仔",
-      category: "江浙小吃、小吃零食",
-      desc: "荷兰优质淡奶，奶香浓而不腻",
-      address: "上海市普陀区真北路",
-      shop: "王小虎夫妻店",
-      shopId: "10333",
-    },
-    {
-      id: "12987123",
-      name: "好滋好味鸡蛋仔",
-      category: "江浙小吃、小吃零食",
-      desc: "荷兰优质淡奶，奶香浓而不腻",
-      address: "上海市普陀区真北路",
-      shop: "王小虎夫妻店",
-      shopId: "10333",
-    },
-    {
-      id: "12987125",
-      name: "好滋好味鸡蛋仔",
-      category: "江浙小吃、小吃零食",
-      desc: "荷兰优质淡奶，奶香浓而不腻",
-      address: "上海市普陀区真北路",
-      shop: "王小虎夫妻店",
-      shopId: "10333",
-    },
-    {
-      id: "12987126",
-      name: "好滋好味鸡蛋仔",
-      category: "江浙小吃、小吃零食",
-      desc: "荷兰优质淡奶，奶香浓而不腻",
-      address: "上海市普陀区真北路",
-      shop: "王小虎夫妻店",
-      shopId: "10333",
-    },
-  ];
+  getData() {
+    axios.get(`/static/tableData.json`).then((res: any) => {
+      this.tableData.push(res.data.data);
+      debugger;
+    });
+  }
+
+  mounted() {
+    // debugger;
+    this.getData();
+  }
 }
 </script>
 
@@ -151,5 +226,110 @@ export default class TableType extends Vue {
 ::v-deep .el-table th {
   background-color: #f5f7f9 !important;
   height: 0px;
+}
+.com-list-body {
+  height: 100%;
+  .el-table {
+    width: 100%;
+    // height: calc(100% - 60px);
+    height: 100%;
+    flex: 0;
+    overflow-y: auto;
+    .el-table__body-wrapper {
+      height: 100%;
+      overflow-y: auto;
+    }
+  }
+  .el-table td,
+  .el-table th.is-leaf {
+    border-bottom: 1px solid #ebeef5 !important;
+  }
+  .el-table th {
+    background-color: #f5f7f9 !important;
+    height: 0px;
+  }
+  .el-table__row {
+    .cell {
+      display: flex;
+    }
+  }
+  // 折叠行样式
+  .column-wrap {
+    display: flex;
+    .small-text {
+      font-size: 12px !important;
+      color: #8c8c8c;
+      margin-left: 16px;
+      .count {
+        color: #000;
+        font-weight: 500;
+      }
+      .line {
+        color: #f0f0f0;
+        margin: 0 8px;
+      }
+    }
+  }
+  // 折叠项目样式
+  .project-wrap {
+    // display: flex;
+    // background: #fafafa;
+    width: 100%;
+    .project-item {
+      width: 100%;
+      .top-wrap {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        // border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        .el-button {
+          position: absolute;
+          right: 16px;
+        }
+        .title-text {
+          color: #262626;
+          display: flex;
+          align-items: center;
+          .index {
+            display: inline-block;
+            margin: 0 8px;
+            width: 16px;
+            height: 16px;
+            border: 1px solid #004ea8;
+            color: #004ea8;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 16px;
+          }
+        }
+      }
+      .content {
+        width: 100%;
+        padding-left: 34px;
+        .el-col {
+          margin-bottom: 8px;
+          display: flex;
+          align-items: center;
+        }
+        .text {
+          color: #595959;
+        }
+        .value {
+          color: #262626;
+          display: flex;
+          align-items: center;
+          img {
+            width: 24px;
+            height: 24px;
+            margin-right: 4px;
+          }
+          .file-text {
+            color: #1491ed;
+          }
+        }
+      }
+    }
+  }
 }
 </style>
