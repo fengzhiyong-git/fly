@@ -8,6 +8,8 @@
       :normalizer="normalizer"
       :default-expand-level="1"
       @select="select"
+      :noOptionsText="'无匹配数据'"
+      noResultsText="无匹配数据"
     >
       <!-- <label
         slot="option-label"
@@ -42,7 +44,7 @@ import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
 @Component({
   name: "SelectTree",
-  components: { Treeselect }
+  components: { Treeselect },
 })
 export default class SelectTree extends Vue {
   @Prop() private treeData!: any[];
@@ -53,7 +55,7 @@ export default class SelectTree extends Vue {
     return {
       ...node,
       // id: node.key,
-      label: node.name
+      label: node.name,
       // children: node.subOptions,
     };
   }
@@ -66,7 +68,7 @@ export default class SelectTree extends Vue {
         {
           id: "4",
           name: "长沙市",
-          isDisabled: true
+          isDisabled: true,
         },
         {
           id: "5",
@@ -76,16 +78,16 @@ export default class SelectTree extends Vue {
           children: [
             {
               id: "6",
-              name: "零陵区"
+              name: "零陵区",
             },
             {
               id: "7",
               name: "宁远县",
-              isNew: true
-            }
-          ]
-        }
-      ]
+              isNew: true,
+            },
+          ],
+        },
+      ],
     },
     {
       id: "2",
@@ -93,10 +95,10 @@ export default class SelectTree extends Vue {
       children: [
         {
           id: "8",
-          name: "武汉市"
-        }
-      ]
-    }
+          name: "武汉市",
+        },
+      ],
+    },
   ];
 
   private select(node: any) {
