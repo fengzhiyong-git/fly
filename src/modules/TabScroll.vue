@@ -7,7 +7,7 @@
       <el-tab-pane label="年度矿山生态问题修复情况" name="4"></el-tab-pane>
       <el-tab-pane label="年度生态修复计划" name="5"></el-tab-pane>
     </el-tabs>
-    <div class="wrap">
+    <div class="wrap" id="wrap" ref="wrap">
       <div class="main-wrap">
         <div class="form-title" id="form_1">
           矿山基本信息
@@ -34,23 +34,48 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "TabScroll",
-  data() {
-    return {
-      msg: "Welcome to Your Vue.js App",
-      activeName: "1"
-    };
-  },
-  methods: {
-    tabClick(tab, event) {
-      document
-        .querySelector(`#form_${tab.name}`)
-        .scrollIntoView({ behavior: "smooth" });
-    }
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+@Component({
+  name: 'TabScroll'
+})
+export default class Province extends Vue {
+  msg = 'Welcome to Your Vue.js App'
+  activeName = '1'
+
+  tabClick(tab: any, event: any) {
+    ;(document.querySelector(`#form_${tab.name}`) as any).scrollIntoView({ behavior: 'smooth' })
   }
-};
+
+  mounted() {
+    const ele = this.$refs.wrap as any
+    ele.addEventListener('scroll', () => {
+      const current_offset_top = ele.scrollTop
+      console.log(current_offset_top, '滚动距离')
+      if (current_offset_top >= 0 && current_offset_top < 421) {
+        this.$nextTick(() => {
+          this.activeName = '1'
+        })
+      } else if (current_offset_top >= 421 && current_offset_top < 842) {
+        this.$nextTick(() => {
+          this.activeName = '2'
+        })
+      } else if (current_offset_top >= 842 && current_offset_top < 1263) {
+        this.$nextTick(() => {
+          this.activeName = '3'
+        })
+      } else if (current_offset_top >= 1263 && current_offset_top < 1325) {
+        this.$nextTick(() => {
+          this.activeName = '4'
+        })
+      } else {
+        this.$nextTick(() => {
+          this.activeName = '5'
+        })
+      }
+    })
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
