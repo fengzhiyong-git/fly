@@ -15,49 +15,50 @@
   </div>
 </template>
 <script lang="ts">
-import { Vue, Component, Watch } from "vue-property-decorator";
-import { AppModule } from "@/store/modules/app";
+import { Vue, Component, Watch } from 'vue-property-decorator'
+import { AppModule } from '@/store/modules/app'
 @Component({
-  name: "Aside",
-  components: {},
+  name: 'Aside',
+  components: {}
 })
 export default class Aside extends Vue {
-  private activeIndex = 0;
+  private activeIndex = 0
   private dataSource = [
-    { name: "柱状图", path: "/Column" },
-    { name: "饼状图", path: "/Pie" },
-    { name: "自定义图形", path: "/custom" },
-    { name: "省份地图", path: "/Province" },
-    { name: "气泡效果", path: "/Bubble" },
-    { name: "长沙市", path: "/ChangeSha" },
-    { name: "表格合计", path: "/TableNum" },
+    { name: '柱状图', path: '/Column' },
+    { name: '饼状图', path: '/Pie' },
+    { name: '自定义图形', path: '/custom' },
+    { name: '省份地图', path: '/Province' },
+    { name: '气泡效果', path: '/Bubble' },
+    { name: '长沙市', path: '/ChangeSha' },
+    { name: '表格合计', path: '/TableNum' },
     // { name: "百度地图", path: "/BaiduMap" },
-    { name: "测试表单验证", path: "/TestTable" },
-    { name: "前端加密", path: "/Crypto" },
-    { name: "tab切换滚动效果", path: "/Scroll" },
-    { name: "签名", path: "/Autograph" },
-    { name: "折叠表单", path: "/TableType" },
-    { name: "打印", path: "/Print" },
-    { name: "甘特图", path: "/Gantt" },
-    { name: "中国地图", path: "/China" },
-  ];
+    { name: '测试表单验证', path: '/TestTable' },
+    { name: '前端加密', path: '/Crypto' },
+    { name: 'tab切换滚动效果', path: '/Scroll' },
+    { name: '签名', path: '/Autograph' },
+    { name: '折叠表单', path: '/TableType' },
+    { name: '打印', path: '/Print' },
+    { name: '甘特图', path: '/Gantt' },
+    { name: '甘特图2', path: '/Gantt2' },
+    { name: '中国地图', path: '/China' }
+  ]
   private toPath(i: any, item: any) {
-    this.activeIndex = i;
-    this.$router.push(item.path);
+    this.activeIndex = i
+    this.$router.push(item.path)
   }
 
   get CurrentPath() {
-    return AppModule.CurrentRoutePath;
+    return AppModule.CurrentRoutePath
   }
 
-  @Watch("$route", { deep: true, immediate: true })
+  @Watch('$route', { deep: true, immediate: true })
   getRoute(val: any) {
-    if (!val) return false;
+    if (!val) return false
     this.dataSource.map((item: any, i: any) => {
       if (item.path === val.fullPath) {
-        this.activeIndex = i;
+        this.activeIndex = i
       }
-    });
+    })
   }
 }
 </script>

@@ -101,6 +101,11 @@ const routes: Array<RouteConfig> = [
         component: () => import("@/modules/Gantt.vue"),
       },
       {
+        path: "Gantt2",
+        name: "Gantt2",
+        component: () => import("@/modules/Gantt2.vue"),
+      },
+      {
         path: "China",
         name: "China",
         component: () => import("@/modules/China.vue"),

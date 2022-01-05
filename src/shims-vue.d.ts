@@ -12,3 +12,5 @@ declare module "@riophae/vue-treeselect";
 declare module "vue-print-nb";
 declare module "gantt-elastic";
 declare module "gantt-elastic-header";
+declare module "lodash.max";
+declare module "lodash.min";
