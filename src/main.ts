@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import '@/utils/directive'
+
 import "@/styles/index.scss"; // 全局样式
 import "./icons"; // svg
 

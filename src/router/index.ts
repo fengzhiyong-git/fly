@@ -110,6 +110,11 @@ const routes: Array<RouteConfig> = [
         name: "China",
         component: () => import("@/modules/China.vue"),
       },
+      {
+        path: "Test",
+        name: "Test",
+        component: () => import("@/modules/Test.vue"),
+      },
     ],
   },
 ];
