@@ -12,6 +12,8 @@
     </el-dialog>
 
     <el-button v-debounce="debounceClick">防抖指令</el-button>
+    <div class="line"></div>
+    <div class="line2"></div>
   </div>
 </template>
 <script lang="ts">
@@ -34,5 +36,18 @@ export default class Test extends Vue {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 16px;
+}
+.line {
+  width: 100%;
+  background: #000;
+  height: 1px;
+  margin-bottom: 16px;
+}
+.line2 {
+  width: 100%;
+  background: #000;
+  height: 1px;
+  transform: scaleY(0.5);
+  transform-origin: 50% 100%;
 }
 </style>
