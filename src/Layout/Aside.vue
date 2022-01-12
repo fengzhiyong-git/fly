@@ -41,7 +41,9 @@ export default class Aside extends Vue {
     { name: '甘特图', path: '/Gantt' },
     { name: '甘特图2', path: '/Gantt2' },
     { name: '中国地图', path: '/China' },
-    { name: '测试页面', path: '/Test' }
+    { name: '测试页面', path: '/Test' },
+    { name: '散点图', path: '/Dot' },
+    { name: '自定义表格', path: '/comTabelBox' }
   ]
   private toPath(i: any, item: any) {
     this.activeIndex = i

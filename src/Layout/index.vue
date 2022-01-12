@@ -24,7 +24,6 @@ export default class Home extends Vue {}
 .container-wrapper {
   width: 100%;
   height: 100%;
-  background: #eee;
   .main-container {
     width: calc(100% -300px);
     height: calc(100% - 60px);

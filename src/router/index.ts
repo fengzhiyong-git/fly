@@ -115,6 +115,16 @@ const routes: Array<RouteConfig> = [
         name: "Test",
         component: () => import("@/modules/Test.vue"),
       },
+      {
+        path: "Dot",
+        name: "Dot",
+        component: () => import("@/modules/Dot.vue"),
+      },
+      {
+        path: "comTabelBox",
+        name: "comTabelBox",
+        component: () => import("@/modules/comTabelBox.vue"),
+      },
     ],
   },
 ];
