@@ -24,6 +24,7 @@ import { AppModule } from '@/store/modules/app'
 export default class Aside extends Vue {
   private activeIndex = 0
   private dataSource = [
+    { name: '轮播', path: '/Swiper' },
     { name: '柱状图', path: '/Column' },
     { name: '饼状图', path: '/Pie' },
     { name: '自定义图形', path: '/custom' },
