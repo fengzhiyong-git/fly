@@ -1,25 +1,29 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
 
 import '@/utils/directive'
 
-import "@/styles/index.scss"; // 全局样式
-import "./icons"; // svg
+import '@/styles/index.scss' // 全局样式
+import './icons' // svg
 
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-Vue.use(ElementUI);
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
 
-import Print from "vue-print-nb";
+import Print from 'vue-print-nb'
 
-Vue.use(Print);
+Vue.use(Print)
 
-Vue.config.productionTip = false;
+// 全局注册highchartsVue
+import HighchartsVue from 'highcharts-vue'
+Vue.use(HighchartsVue)
+
+Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
-  render: (h) => h(App),
-}).$mount("#app");
+  render: h => h(App)
+}).$mount('#app')

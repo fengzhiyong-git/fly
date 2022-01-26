@@ -17,6 +17,8 @@
     "element-ui": "^2.15.0",
     "gantt-elastic": "^1.0.12",
     "gantt-elastic-header": "^0.1.11",
+    "highcharts": "^9.3.2",
+    "highcharts-vue": "^1.4.0",
     "jquery": "^3.5.1",
     "lodash": "^4.17.21",
     "lodash.max": "^4.0.1",

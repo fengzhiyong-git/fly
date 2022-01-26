@@ -129,6 +129,16 @@ const routes: Array<RouteConfig> = [
         path: 'Swiper',
         name: 'Swiper',
         component: () => import('@/modules/Swiper.vue')
+      },
+      {
+        path: 'WeeklyTask',
+        name: 'WeeklyTask',
+        component: () => import('@/modules/WeeklyTask.vue')
+      },
+      {
+        path: 'HighChartsDemo',
+        name: 'HighChartsDemo',
+        component: () => import('@/modules/HighChartsDemo.vue')
       }
     ]
   }
