@@ -25,6 +25,7 @@
     "lodash.min": "^4.0.1",
     "print-js": "^1.6.0",
     "signature_pad": "^3.0.0-beta.4",
+    "sortablejs": "^1.14.0",
     "svg-sprite-loader": "^5.2.1",
     "swiper": "^4.4.1",
     "uuid": "^8.3.2",

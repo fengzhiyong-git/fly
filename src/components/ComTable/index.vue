@@ -15,6 +15,7 @@
         @select="select"
         :row-key="rowKey"
         :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+        v-colSortable
       >
         <el-table-column type="selection" :reserve-selection="true" width="55" v-if="showSelect"> </el-table-column>
         <!-- 设置列 -->
