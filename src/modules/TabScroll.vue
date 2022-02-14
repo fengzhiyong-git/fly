@@ -47,6 +47,25 @@ export default class Province extends Vue {
     ;(document.querySelector(`#form_${tab.name}`) as any).scrollIntoView({ behavior: 'smooth' })
   }
 
+  tabAnchors: number[] = []
+  watchTab(event: any) {
+    const tabs: any[] = [...document.getElementsByClassName('el-tabs__item')]
+    const scrollTop: number = event.target?.scrollTop
+    const indexs: number[] = []
+    this.tabAnchors.forEach((item, index) => {
+      if (scrollTop + 50 >= item) {
+        indexs.push(index)
+      }
+    })
+    const largest: number = Math.max(...indexs)
+    tabs.forEach(item => {
+      item?.classList.remove('is-active')
+    })
+    tabs?.[largest]?.classList.add('is-active')
+    ;(document.querySelector('.el-tabs__active-bar') as any).style.transform = `translateX(${tabs?.[largest]
+      ?.offsetLeft + 20}px)`
+  }
+
   mounted() {
     const ele = this.$refs.wrap as any
     ele.addEventListener('scroll', () => {
