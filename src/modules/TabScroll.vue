@@ -93,6 +93,14 @@ export default class Province extends Vue {
         })
       }
     })
+
+    this.$nextTick(() => {
+      this.tabAnchors.push((document as any).querySelector(`#form_1`).offsetTop)
+      this.tabAnchors.push((document as any).querySelector(`#form_2`).offsetTop)
+      this.tabAnchors.push((document as any).querySelector(`#form_3`).offsetTop)
+      this.tabAnchors.push((document as any).querySelector(`#form_4`).offsetTop)
+      this.tabAnchors.push((document as any).querySelector(`#form_5`).offsetTop)
+    })
   }
 }
 </script>
