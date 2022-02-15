@@ -2,7 +2,7 @@
   <header class="navbar">
     <div class="header-left">
       <img class="site-icon" src="@/assets/header/head-logo.jpg" alt="" />
-      <div class="site-name">Mr.Feng's blog</div>
+      <div class="site-name">Niuma-electronics-factory's blog</div>
     </div>
     <div class="header-right">
       <el-input size="small" placeholder="请输入内容" v-model="keyWord">
@@ -16,12 +16,12 @@
   </header>
 </template>
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component } from 'vue-property-decorator'
 @Component({
-  name: "Header"
+  name: 'Header'
 })
 export default class Header extends Vue {
-  private keyWord = ""; // 搜索关键字
+  private keyWord = '' // 搜索关键字
 }
 </script>
 <style lang="scss" scoped>
