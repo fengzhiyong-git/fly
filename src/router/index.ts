@@ -139,6 +139,11 @@ const routes: Array<RouteConfig> = [
         path: 'HighChartsDemo',
         name: 'HighChartsDemo',
         component: () => import('@/modules/HighChartsDemo.vue')
+      },
+      {
+        path: 'ProgressDemo',
+        name: 'ProgressDemo',
+        component: () => import('@/modules/ProgressDemo.vue')
       }
     ]
   }

@@ -266,7 +266,12 @@ export default class TableNum extends Vue {
       num: 35
     }
   ]
-  private items: any = []
+  private items: any = [
+    {
+      prj_name: 'a',
+      prj_num_gather: 'b'
+    }
+  ]
   private totalItem = 0
 
   private typeData: any = []
@@ -313,7 +318,7 @@ export default class TableNum extends Vue {
   }
   handleCheckedColumnChange(value: any) {
     // debugger
-    let checkedCount = value.length
+    const checkedCount = value.length
     const arr: any = []
     value.forEach((item: any) => {
       this.allHeaders.forEach((tt: any) => {

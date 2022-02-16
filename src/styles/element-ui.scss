@@ -87,7 +87,7 @@
 // 设置Form默认间距
 .el-form {
   // .el-form-item__label {
-    // font-size: 14px;
+  // font-size: 14px;
   // }
 
   .el-form-item {
@@ -113,15 +113,13 @@
 
   .el-loading-spinner .el-loading-text {
     margin-top: 16px;
-    color: #096DD9 !important;
+    color: #096dd9 !important;
   }
 }
-
 
 .el-select-dropdown {
   min-width: 200px;
 }
-
 
 // 分页尺寸调整
 .v-application ul {
@@ -147,7 +145,7 @@
 .uploader-btn {
   padding: 8px 15px !important;
   line-height: 0 !important;
-  border: 1px solid #DCDFE6 !important;
+  border: 1px solid #dcdfe6 !important;
 }
 
 .uploader-btn:hover {
@@ -176,8 +174,8 @@
 .el-textarea .el-textarea__inner {
   resize: none;
 }
-.el-form--label-top .el-form-item__label{
-  padding-bottom: 0!important;
+.el-form--label-top .el-form-item__label {
+  padding-bottom: 0 !important;
 }
 // .el-tabs{
 //   .el-tabs__active-bar{
@@ -185,30 +183,38 @@
 //     border-radius:3px 3px 0px 0px;
 //   }
 // }
-.el-popconfirm__main{
+.el-popconfirm__main {
   margin-bottom: 12px;
 }
 
-  .hideStyle {
-    pointer-events: none;
-    color: inherit;
-    cursor: default;
-    padding: 0 !important;
-    border: none !important;
-  }
-  .showStyle {
-    pointer-events: auto;
-    color: inherit;
-    cursor: pointer;
-    padding: 0 !important;
-    border: none !important;
-  }
-  // 修改年份日期选择器的默认样式
-  .el-date-picker .el-year-table .today .cell{
-    color: #606266 !important;
-    font-weight: normal !important;
-  }
-  .el-date-picker .el-year-table td.current:not(.disabled) .cell{
-    color: #409EFF !important;
-    font-weight: bold !important;
-  }
+.hideStyle {
+  pointer-events: none;
+  color: inherit;
+  cursor: default;
+  padding: 0 !important;
+  border: none !important;
+}
+.showStyle {
+  pointer-events: auto;
+  color: inherit;
+  cursor: pointer;
+  padding: 0 !important;
+  border: none !important;
+}
+// 修改年份日期选择器的默认样式
+.el-date-picker .el-year-table .today .cell {
+  color: #606266 !important;
+  font-weight: normal !important;
+}
+.el-date-picker .el-year-table td.current:not(.disabled) .cell {
+  color: #409eff !important;
+  font-weight: bold !important;
+}
+
+// table拖动样式
+// .insert-before-col {
+//   border-left: 2px dotted #b1b0b0;
+// }
+// .insert-after-col {
+//   border-right: 2px dotted #b1b0b0 !important;
+// }

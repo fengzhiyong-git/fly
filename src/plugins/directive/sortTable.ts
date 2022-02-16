@@ -16,16 +16,19 @@ const insertAfter = (newNode: HTMLElement, referenceNode: HTMLElement) => {
 const changeRowClassName = (dom: HTMLElement, type: string, index?: any, className?: string) => {
   const tHeader = dom.querySelector('.el-table__header-wrapper tr')
   const tBody: any = dom.querySelector('.el-table__body-wrapper tbody')
-  const thDoms: any = tHeader?.getElementsByClassName('el-table__cell')
+  // const thDoms: any = tHeader?.getElementsByClassName('el-table__cell')
+  const thDoms: any = tHeader?.getElementsByTagName('th')
   const trDoms: any = tBody?.getElementsByClassName('el-table__row')
   for (let i = 0; i < trDoms.length; i++) {
-    const tdDoms = trDoms[i].getElementsByClassName('el-table__cell')
+    // const tdDoms = trDoms[i].getElementsByClassName('el-table__cell')
+    const tdDoms = trDoms[i].getElementsByTagName('td')
     if (type === 'clear') {
       for (let i = 0; i < tdDoms.length; i++) {
         tdDoms[i].classList.remove('insert-after-col', 'insert-before-col')
         thDoms[i].classList.remove('insert-after-col', 'insert-before-col')
       }
     } else if (type === 'add') {
+      if (tdDoms?.length === 0) return
       setTimeout(() => {
         tdDoms[index].classList.add(className)
       }, 200)
@@ -60,7 +63,8 @@ Vue.directive('colSortable', {
         if (!trDoms || newIndex - oldIndex === 0) return
         const direction = newIndex - oldIndex > 0 ? 'right' : 'left'
         for (let i = 0; i < trDoms.length; i++) {
-          const tdDoms = trDoms[i].getElementsByClassName('el-table__cell')
+          // const tdDoms = trDoms[i].getElementsByClassName('el-table__cell')
+          const tdDoms = trDoms[i].getElementsByTagName('td')
           const oldTd = tdDoms[oldIndex]
           const newTd = tdDoms[newIndex]
           direction === 'right' ? insertAfter(oldTd, newTd) : trDoms[i].insertBefore(oldTd, newTd)

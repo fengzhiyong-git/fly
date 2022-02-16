@@ -19,9 +19,9 @@ module.exports = {
   },
   rules: {
     //遇见console警告,提醒开发人员调试完成后删除console信息
-    'no-console': 0,
+    'no-console': 1,
     // 遇见debugger提醒，方便开发人员调试后剔除
-    'no-debugger': 0,
+    'no-debugger': 1,
     // 关闭不允许出现空对象
     'no-empty': 0,
     // 这个是vue-eslint-plugin的一个bug,root标签无法使用v-if,v-else

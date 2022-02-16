@@ -28,6 +28,7 @@ export default class Aside extends Vue {
     { name: '柱状图', path: '/Column' },
     { name: '饼状图', path: '/Pie' },
     { name: '自定义图形', path: '/custom' },
+    { name: 'echarts流程图', path: '/ProgressDemo' },
     { name: '省份地图', path: '/Province' },
     { name: '气泡效果', path: '/Bubble' },
     { name: '长沙市', path: '/ChangeSha' },
